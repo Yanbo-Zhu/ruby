@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04_ruby核心/04_06_迭代器.md",
+                "file": "04_ruby核心/04_08_目录.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "04_ruby核心/04_06_迭代器.md",
+                "file": "04_ruby核心/04_08_目录.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "04_ruby核心/04_06_迭代器.md",
+                "file": "04_ruby核心/04_08_目录.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +135,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "04_ruby核心/04_06_迭代器.md"
+                "file": "04_ruby核心/04_08_目录.md"
               }
             }
           }
@@ -160,8 +160,10 @@
   },
   "active": "17e1f7ec6cb14844",
   "lastOpenFiles": [
-    "04_ruby核心/04_03_模块module.md",
+    "04_ruby核心/04_07_Ruby IO.md",
+    "04_ruby核心/04_08_目录.md",
     "04_ruby核心/04_06_迭代器.md",
+    "04_ruby核心/04_03_模块module.md",
     "04_ruby核心/04_04_Ruby类和对象.md",
     "04_ruby核心/04_05_范围.md",
     "03_数据类型/03_07_时间日期.md",
@@ -184,8 +186,6 @@
     "06_条件控制语句/06_01.md",
     "05_面向对象/05_01_引子.md",
     "03_数据类型/03_05_符号.md",
-    "03_数据类型/03_02_数字.md",
-    "02_基础2/02_05_nil.md",
     "06_条件控制语句",
     "05_面向对象",
     "04_ruby核心",
