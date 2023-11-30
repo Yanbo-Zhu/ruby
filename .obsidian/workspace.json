@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "04_ruby核心/04_08_目录.md",
+                "file": "06_条件控制语句/06_01.md",
                 "mode": "source",
                 "source": false
               }
@@ -69,7 +69,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 250.50260543823242
   },
   "right": {
     "id": "122c79580ae4be63",
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "04_ruby核心/04_08_目录.md",
+                "file": "06_条件控制语句/06_01.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "04_ruby核心/04_08_目录.md",
+                "file": "06_条件控制语句/06_01.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +135,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "04_ruby核心/04_08_目录.md"
+                "file": "06_条件控制语句/06_01.md"
               }
             }
           }
@@ -160,32 +160,32 @@
   },
   "active": "17e1f7ec6cb14844",
   "lastOpenFiles": [
-    "04_ruby核心/04_07_Ruby IO.md",
-    "04_ruby核心/04_08_目录.md",
-    "04_ruby核心/04_06_迭代器.md",
-    "04_ruby核心/04_03_模块module.md",
-    "04_ruby核心/04_04_Ruby类和对象.md",
-    "04_ruby核心/04_05_范围.md",
+    "03_数据类型/03_00_总览.md",
+    "02_基础2/02_01_运算符.md",
+    "02_基础2/02_04_注释.md",
+    "02_基础2/02_02_Ruby变量类型.md",
+    "02_基础2/02_06_例外处理.md",
+    "04_ruby核心/04_04_类和对象.md",
+    "04_ruby核心/04_02_方法.md",
     "03_数据类型/03_07_时间日期.md",
-    "03_数据类型/03_06_hash.md",
+    "03_数据类型/03_01_数据类型类型转换.md",
+    "04_ruby核心/04_05_范围.md",
+    "04_ruby核心/04_01_块.md",
     "03_数据类型/03_03_数组.md",
     "03_数据类型/03_04_字符串.md",
-    "04_ruby核心/04_01_块.md",
-    "04_ruby核心/04_02_方法.md",
+    "04_ruby核心/04_03_模块module.md",
+    "02_基础2/02_05_nil.md",
+    "04_ruby核心/04_08_目录.md",
+    "04_ruby核心/04_07_Ruby IO.md",
+    "04_ruby核心/04_06_迭代器.md",
+    "03_数据类型/03_06_hash.md",
     "06_条件控制语句/07_09_循环.md",
     "06_条件控制语句/07_10_unless.md",
-    "02_基础2/02_06_例外处理.md",
-    "03_数据类型/03_01_类型转换.md",
     "06_条件控制语句/06_08_redo_retry.md",
     "06_条件控制语句/06_07_break_next.md",
     "06_条件控制语句/06_06_until.md",
     "06_条件控制语句/06_05_doWhile.md",
     "06_条件控制语句/06_04_for.md",
-    "06_条件控制语句/06_03_case.md",
-    "06_条件控制语句/06_02_ifelse.md",
-    "06_条件控制语句/06_01.md",
-    "05_面向对象/05_01_引子.md",
-    "03_数据类型/03_05_符号.md",
     "06_条件控制语句",
     "05_面向对象",
     "04_ruby核心",
