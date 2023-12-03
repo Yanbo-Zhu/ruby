@@ -13,13 +13,38 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "06_条件控制语句/06_01.md",
+                "file": "05_面向对象/05_02_类和对象.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "96856a914715e069",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "07_其他/07_01_Ruby套接字编程Socket.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "b3d3b3a6507565bb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "03_数据类型/03_04_字符串.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -48,7 +73,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#调试方法irb",
+                "query": "tag:#match操作符",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -69,7 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 250.50260543823242
+    "width": 236.5
   },
   "right": {
     "id": "122c79580ae4be63",
@@ -85,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "06_条件控制语句/06_01.md",
+                "file": "03_数据类型/03_04_字符串.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "06_条件控制语句/06_01.md",
+                "file": "03_数据类型/03_04_字符串.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -135,7 +160,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "06_条件控制语句/06_01.md"
+                "file": "03_数据类型/03_04_字符串.md"
               }
             }
           }
@@ -144,7 +169,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 234.5
+    "width": 239.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -158,34 +183,35 @@
       "workspaces:管理工作区布局": false
     }
   },
-  "active": "17e1f7ec6cb14844",
+  "active": "b3d3b3a6507565bb",
   "lastOpenFiles": [
+    "07_其他/07_04_正则表达式.md",
+    "03_数据类型/03_04_字符串.md",
+    "03_数据类型/03_02_数字.md",
+    "03_数据类型/03_08_布尔类型.md",
     "03_数据类型/03_00_总览.md",
+    "03_数据类型/03_01_数据类型类型转换.md",
+    "05_面向对象/05_01_引子.md",
+    "05_面向对象/05_02_类和对象.md",
+    "07_其他/07_03_解析XML.md",
+    "07_其他/07_02_Ruby多线程编程.md",
+    "07_其他/07_01_Ruby套接字编程Socket.md",
+    "07_其他",
+    "未命名.md",
+    "04_ruby核心/04_09_异常.md",
+    "04_ruby核心/04_06_迭代器.md",
+    "04_ruby核心/04_01_块.md",
+    "04_ruby核心/04_05_范围.md",
+    "06_条件控制语句/06_01.md",
     "02_基础2/02_01_运算符.md",
     "02_基础2/02_04_注释.md",
     "02_基础2/02_02_Ruby变量类型.md",
     "02_基础2/02_06_例外处理.md",
-    "04_ruby核心/04_04_类和对象.md",
     "04_ruby核心/04_02_方法.md",
     "03_数据类型/03_07_时间日期.md",
-    "03_数据类型/03_01_数据类型类型转换.md",
-    "04_ruby核心/04_05_范围.md",
-    "04_ruby核心/04_01_块.md",
     "03_数据类型/03_03_数组.md",
-    "03_数据类型/03_04_字符串.md",
     "04_ruby核心/04_03_模块module.md",
     "02_基础2/02_05_nil.md",
-    "04_ruby核心/04_08_目录.md",
-    "04_ruby核心/04_07_Ruby IO.md",
-    "04_ruby核心/04_06_迭代器.md",
-    "03_数据类型/03_06_hash.md",
-    "06_条件控制语句/07_09_循环.md",
-    "06_条件控制语句/07_10_unless.md",
-    "06_条件控制语句/06_08_redo_retry.md",
-    "06_条件控制语句/06_07_break_next.md",
-    "06_条件控制语句/06_06_until.md",
-    "06_条件控制语句/06_05_doWhile.md",
-    "06_条件控制语句/06_04_for.md",
     "06_条件控制语句",
     "05_面向对象",
     "04_ruby核心",
