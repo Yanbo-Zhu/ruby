@@ -95,10 +95,193 @@ puts BaseFunc.v
 #puts BaseFunc.add(10, 30) #会报错，使用模块名无法访问一般方法。
 ```
 
-# 3 通过引用模块重构代码 类include模块
+# 3 引用模块
+
+
+**解释：** 在这里我们使用了`include`关键字来引用模块（引入模块一共有三种方式：_include_、_extend_、_prepend_，在之后的章节中我们会对这三种情况逐个分析）
+https://www.jianshu.com/p/7ee3cf85b06c
+
+
+
+
+## 3.1 区别
+
+
+先创建一个`Person`类，并且定义一个`FooModule`模块
+
+```ruby
+class Person
+  def introduce
+    puts "hello, i am from Person"
+  end
+end
+
+person = Person.new
+person.introduce
+#=> hello, i am from Person
+
+module FooModule
+  def introduce
+    puts "hello, i am from Person FooModule"
+  end
+
+  def current_time
+    puts "current time is #{Time.now.to_s}"
+  end
+end
+```
+
+extend
+现在我们在`Person`类中使用`extend`关键字来调用模块，使用相关方法，并且打印出相关信息。
+我们由`Person.introduce`和`Person.current_time`可以观察出来`extend`关键字的作用是为`Person`添加了2个类方法。
+```ruby
+class Person
+  extend FooModule
+end
+
+Person.introduce
+# => hello, i am from FooModule
+person.introduce
+# => hello, i am from Person
+Person.current_time
+# => current time is 2019-11-01 10:53:04 +0800
+person.current_time
+# =>  undefined method `current_time' for #<Person:0x000000028395d0> (NoMethodError)
+```
+
+
+include
+上面两个类调用的方法都报错了可以看出，`include`和`extend`相反，`include`是为类中添加的实例方法，而不是类方法。
+```ruby
+class Person
+  include FooModule
+end
+
+Person.introduce
+# =>  undefined method `introduce' for Person:Class (NoMethodError)
+person.introduce
+# => hello, i am from Person
+Person.current_time
+# =>  undefined method `current_time' for Person:Class (NoMethodError)
+person.current_time
+# => current time is 2019-11-01 10:59:28 +0800
+```
+
+prepend
+`prepend`和`include`同样都是为类中添加实例方法，但不同之处在于，引入模块后的方法链会有一点区别
+
+我们先看看 `include`的方法链
+```ruby
+class Person
+  # extend FooModule
+  include FooModule
+  # prepend FooModule
+end
+
+puts Person.ancestors
+
+# =>Person
+# =>FooModule
+# =>Object
+# =>JSON::Ext::Generator::GeneratorMethods::Object
+# =>PP::ObjectMixin
+# =>Kernel
+# =>BasicObject
+```
+
+再看看`prepend`的
+```ruby
+
+class Person
+  # extend FooModule
+  # include FooModule
+  prepend FooModule
+end
+
+puts Person.ancestors
+
+# =>FooModule
+# =>Person
+# =>Object
+# =>JSON::Ext::Generator::GeneratorMethods::Object
+# =>PP::ObjectMixin
+# =>Kernel
+# =>BasicObject
+```
+
+
+可以看出`FooModule`和`Person`的顺序有什么不同，那么具体不同体现在哪，接下来我们调用方法就可以看出区别了。
+可以看到，如果使用`prepend`的话我们会优先去查找`FooModule`中的`introduce`方法（如果`FooModule`没有`introduce`方法话，会依次去祖先链的上一级去查找`introduce`方法），而`include`是优先在`Person`中去查找。
+
+include 
+```ruby
+class Person
+  # extend FooModule
+  include FooModule
+  # prepend FooModule
+end
+person.introduce
+# => hello, i am from Person
+```
+
+
+prepend
+```ruby
+class Person
+  # extend FooModule
+  # include FooModule
+  prepend FooModule
+end
+person.introduce
+# => hello, i am from FooModule
+```
+
+## 3.2 Ruby 的 include 和 included (添加实例方法)
+
+Ruby 提供了混入（Mixin）的方式使用模块（Module）,它可以让被混入的模块中的代码被其他类或者模块使用。
+本章节我们学习了`include`，当类`include`一个模块的时候，会将模块中定义的方法填充进类的实例方法中，另外，当一个模块被`include`的时候，会触发`included`回调，并返回操作的类名
+
+### 3.2.1 include
+
+`include`将会把模块里的方法包含进被执行的类的**实例方法**中。
+
+**解释**：当类`Member`包含了模块`Person`之后，类`Member`增加了一个名为`name`的实例方法（类实例后可调用的方法）。
+
+```ruby
+module Person
+  def name
+    "My name is Andrew"
+  end
+end
+
+class Member
+  include Person
+end
+
+puts Member.new.name
+
+# ---- 输出结果 ----
+My name is Andrew
+
+```
+
+
+
+
+引用的方法都会变成`Person`类的实例方法。重构后，我们调用`encrypted_password`时加密时使用的`encrypt`方法来自`Encryption`模块内，这样避免了在很多类中做同一种加密，每修改一次加密形式就要修改每一个类代码的问题。
+
+上述这种情况假设我们还有其它需要加密内容的类，我们还希望将加密的方法保留在一个地方，这么做有 4 个好处：
+- 当我们想切换到另一种加密方式的时候，只需要更改这个模块的加密代码即可；
+
+- 我们不希望相同的加密逻辑代码在某些需要的位置重复被使用；
+- 可以把这种代码视为一个杂物，隐藏在另一个文件中，我们只需要关心类的工作，不需要关心加密事务的具体逻辑；
+- 使用模块来封装代码也会使可读性更高。
+
+
 ```ruby
 class BaseClass include BaseFunc
 end
+
 puts BaseClass::Version #可以访问
 #self等私有方法属性是该模块自身的不会被include。
 # puts BaseClass.showVersion
@@ -188,18 +371,201 @@ p person.encrypted_password
 ```
 
 
-**解释：** 在这里我们使用了`include`关键字来引用模块（引入模块一共有三种方式：_include_、_extend_、_prepend_，在之后的章节中我们会对这三种情况逐个分析），引用的方法都会变成`Person`类的实例方法。重构后，我们调用`encrypted_password`时加密时使用的`encrypt`方法来自`Encryption`模块内，这样避免了在很多类中做同一种加密，每修改一次加密形式就要修改每一个类代码的问题。
+### 3.2.2 included
 
-上述这种情况假设我们还有其它需要加密内容的类，我们还希望将加密的方法保留在一个地方，这么做有 4 个好处：
+当我们include了一个模块后，模块被包含后会调用一个钩子方法，这个方法名为included。
 
-- 当我们想切换到另一种加密方式的时候，只需要更改这个模块的加密代码即可；
-    
-- 我们不希望相同的加密逻辑代码在某些需要的位置重复被使用；
-    
-- 可以把这种代码视为一个杂物，隐藏在另一个文件中，我们只需要关心类的工作，不需要关心加密事务的具体逻辑；
-    
-- 使用模块来封装代码也会使可读性更高。
+让我们为模块Person增加一个钩子方法。
+**解释**：当模块`Person`被包含后，触发了`included`钩子方法，打印了“Member included Person”。
 
+```ruby
+module Person
+  def self.included(klass)
+    puts "#{klass} included #{self}"
+  end
+  
+  def name
+    "My name is Andrew"
+  end
+end
+
+class Member
+  include Person
+end
+
+puts Member.new.name
+
+# ---- 输出结果 ----
+Member included Person
+My name is Andrew
+
+```
+
+
+## 3.3 extend 和 extended (扩展的是类方法)
+
+本章节我们学习了`extend`，当类或模块`extend`一个模块的时候，会将模块中定义的方法填充进类或模块的类方法中，另外，当一个模块被`extend`的时候，会触发`extended`回调，并返回操作的类名。
+
+### 3.3.1 extend
+
+`extend`可以扩展类或模块里面的方法，与`include`不同，`extend`扩展的是类方法（_Class Method_）。
+
+**解释**：如上面输出结果展示的那样，扩展后，模块`Person`为类`Member`增加了一个名叫`name`的类方法（类方法是以类名直接调用的方法）。
+除此之外对象也可以对模块进行`extend`，模块中的方法变成了实例方法（_Instance Method_），不过扩展的方法只针对一个对象有效。
+
+```ruby
+module Person
+  def name
+    "My name is Andrew"
+  end
+end
+
+class Member
+  extend Person
+end
+
+puts Member.name
+
+# ---- 输出结果 ----
+My name is Andrew
+
+```
+
+### 3.3.2 extended
+
+当我们`extend`一个模块的时候，就会触发模块的`extended`回调函数。
+
+让我们修改一下上面的实例。
+**解释**：当模块`Person`被扩展后，会触发`extended`钩子方法，率先打印了“Member extended Person”。
+
+```ruby
+module Person
+  def self.extended(klass)
+    puts "#{klass} extended #{self}"
+  end
+  
+  def name
+    "My name is Andrew"
+  end
+end
+
+class Member
+  extend Person
+end
+
+puts Member.name
+
+# ---- 输出结果 ----
+Member extended Person
+My name is Andrew
+
+```
+
+
+
+## 3.4 prepend 和 prepened (添加的类的实例方法)
+
+本章节我们学习了`prepend`，它和`include`很像，都可以向类追加实例方法，不同的是，`prepend`追加的方法的名称和类本身拥有的相同时，`prepend`会覆盖原有的方法，`include`则不会覆盖。另外，当一个模块被`prepend`的时候，会触发`prepended`回调，并返回操作的类名。
+
+
+### 3.4.1 prepend
+
+prepend是在 Ruby2.0 以后引入进来的，它的使用方式和include非常类似，将模块中定义的方法添加进被添加的类的实例方法中。
+
+```ruby
+module Person
+  def name
+    "My name is Andrew"
+  end
+end
+
+class Member
+  prepend Person
+end
+
+puts Member.new.name
+
+# ---- 输出结果 ----
+My name is Andrew
+
+```
+
+
+### 3.4.2 prepend 和 include 的区别
+
+使用`include`或者`extend`引入的方法如果和被引入的模块/类中的**方法重名**，将不会覆盖被引入模块的方法，但是`prepend`**会覆盖被引入模块的方法**。
+
+而 prepend 则是这个样子。
+```ruby
+module Person
+  def name
+    "My name is Person"
+  end
+end
+
+class Member
+  include Person
+  
+  def name
+    "My name is Andrew"
+  end
+end
+
+puts Member.new.name
+
+# ---- 输出结果 ----
+My name is Andrew
+
+```
+
+我们会发现，原本的 name 实例方法被覆盖了。
+```ruby
+module Person
+  def name
+    "My name is Person"
+  end
+end
+
+class Member
+  prepend Person
+  
+  def name
+    "My name is Andrew"
+  end
+end
+
+puts Member.new.name
+
+# ---- 输出结果 ----
+My name is Person
+
+```
+
+### 3.4.3 prepended
+当类追加模块后，会触发prepended钩子方法。
+**解释**：当模块`Person`被追加后，触发了`prepended`钩子方法，打印了“Person prepended to Member”。
+```ruby
+module Person
+  def self.prepended(klass)
+    puts "#{self} prepended to #{klass}"
+  end
+
+  def name
+    "My name is Andrew"
+  end
+end
+
+class Member
+  prepend Person
+end
+
+puts Member.new.name
+
+# ---- 输出结果 ----
+Person prepended to Member
+My name is Andrew
+
+```
 # 4 模块命名空间
 
 在编写较大的文件时，需要生成大量可重用的代码。 这些代码被组织成类，可以插入到一个文件中。
@@ -295,8 +661,6 @@ final.f
 ```
 
 这里，模块`Name`由方法`bella`和`ana`组成。 模块`Job`由方法`editor`和`writer`组成。`Combo`类包括两个模块，由于`Combo`可以访问所有四种方法。 因此，`Combo`类作为`mixin`混合类型使用。
-
-
 
 # 6 模块 和 类的关系 
 
