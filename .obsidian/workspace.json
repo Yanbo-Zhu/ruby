@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "07_其他/07_02_Ruby多线程编程.md",
+                "file": "04_ruby核心/04_07_Ruby IO.md",
                 "mode": "source",
                 "source": false
               }
@@ -48,7 +48,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "线程",
+                "query": "unless",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -65,8 +65,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -86,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "07_其他/07_02_Ruby多线程编程.md",
+                "file": "04_ruby核心/04_07_Ruby IO.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -103,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "07_其他/07_02_Ruby多线程编程.md",
+                "file": "04_ruby核心/04_07_Ruby IO.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +135,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "07_其他/07_02_Ruby多线程编程.md"
+                "file": "04_ruby核心/04_07_Ruby IO.md"
               }
             }
           }
@@ -161,11 +160,21 @@
   },
   "active": "62b7820e1dffef4e",
   "lastOpenFiles": [
+    "03_数据类型/03_06_hash.md",
+    "07_其他/07_07_fileRead.md",
+    "08_常用类/08_01_综合.md",
+    "06_条件控制语句/06_01.md",
+    "03_数据类型/03_01_数据类型类型转换.md",
+    "03_数据类型/03_07_时间日期.md",
+    "03_数据类型/03_02_数字.md",
+    "04_ruby核心/04_01_块.md",
+    "07_其他/07_04_正则表达式.md",
+    "07_其他/07_05_使用JSON.md",
+    "07_其他/07_02_Ruby多线程编程.md",
+    "07_其他/07_03_解析XML.md",
     "07_其他/07_06_发布Gem.md",
     "02_基础2/02_07_作用域Scope.md",
     "05_01_面向对象/05_04_SingletonClass_单例类.md",
-    "07_其他/07_03_解析XML.md",
-    "07_其他/07_05_使用JSON.md",
     "04_ruby核心/Lambda 和 Proc 保存块到变量.md",
     "05_01_面向对象/05_03_类宏.md",
     "04_ruby核心/04_03_模块module.md",
@@ -177,20 +186,10 @@
     "05_02_元编程/05_02_02_动态定义_动态调用.md",
     "03_数据类型/03_04_字符串.md",
     "03_数据类型/03_03_数组.md",
-    "03_数据类型/03_00_总览.md",
-    "04_ruby核心/04_05_范围.md",
-    "07_其他/07_04_正则表达式.md",
-    "08_常用类/08_01_综合.md",
-    "05_02_元编程/05_02_00_元编程.md",
     "05_02_元编程",
-    "未命名.md",
-    "03_数据类型/03_07_时间日期.md",
     "08_常用类",
-    "04_ruby核心/04_09_异常.md",
     "04_ruby核心/image/5ee6d55d0845b28405050606.jpg",
     "04_ruby核心/image",
-    "04_ruby核心/04_07_Ruby IO.md",
-    "04_ruby核心/04_01_块.md",
     "07_其他",
     "06_条件控制语句",
     "05_01_面向对象",
